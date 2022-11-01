@@ -1,5 +1,7 @@
 #%%
 import pandas as pd
+import numpy as np
+
 #%%
 file = pd.read_csv("tabular_data/AirBnbData.csv")
 # %%
@@ -23,8 +25,23 @@ def set_default_feature_values(*dfs):
         
         print(df.isna().sum()) # Checks to see if its already been filled
 # %%
-for idx, value in enumerate(file['Description']):
-    print(idx, value)
+def remove_rows_with_missing_ratings(*args):
+    for df in args:
+        if isinstance(df, pd.DataFrame):
+            for column in df:
+                if df[column].isna().sum() > 1:
+                    dropped_rows = df[column].dropna(0, inplace=True)
+                else:
+                    print("Column has no missing values!")
+        else:
+            raise ValueError
+    
+    print(dropped_rows.isna().sum())
 # %%
-file.isna().sum()
+# def combine_description_strings():
+#%%
+#%%
+new_string = " ".join(map(str, file["Description"]))
+file["Description"] = new_string
+print(file["Description"])
 # %%
