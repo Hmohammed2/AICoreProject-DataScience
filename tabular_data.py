@@ -1,6 +1,7 @@
 #%%
 import pandas as pd
 import numpy as np
+import re
 
 #%%
 file = pd.read_csv("tabular_data/AirBnbData.csv")
@@ -38,12 +39,15 @@ def remove_rows_with_missing_ratings(*args):
     
     print(dropped_rows.isna().sum())
 # %%
-# def combine_description_strings():
-#%%
-#%%
-new_string = " ".join(map(str, file["Description"]))
-file["Description"] = new_string
-print(file["Description"])
+def combine_description_strings(column, pattern):
+    if isinstance(column, pd.Series):
+        new_string = " ".join(map(str, column))
+        print(re.findall(f'r"{pattern}"', new_string))
+        cleaned_string = re.sub(f'r"{pattern}"', '' ,new_string)
+        print(cleaned_string)
+        return cleaned_string
+    else:
+        raise ValueError
 # %%
-print(new_string)
+type(file["Description"])
 # %%
