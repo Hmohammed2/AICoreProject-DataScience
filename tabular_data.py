@@ -45,3 +45,5 @@ new_string = " ".join(map(str, file["Description"]))
 file["Description"] = new_string
 print(file["Description"])
 # %%
+print(new_string)
+# %%
