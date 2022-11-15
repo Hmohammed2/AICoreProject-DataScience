@@ -1,14 +1,7 @@
-#%%
 import pandas as pd
 import numpy as np
 import re
-<<<<<<< HEAD
-import os
 
-from macpath import join
-
-=======
->>>>>>> refs/remotes/origin/main
 #%%
 
 def set_default_feature_values(*dfs):
