@@ -10,20 +10,12 @@ from macpath import join
 =======
 >>>>>>> refs/remotes/origin/main
 #%%
-def clean_tabular_data(file == str):
-    #%%
-    data = pd.read_csv(file)
-    # %%
-    print(data.head())
-    # %%
-    ratings_column = data[["Value_rate",  "Cleanliness_rate", "Accuracy_rate", 
-            "Communication_rate", "Location_rate", "Check-in_rate"]]
-    # %%
-    def set_default_feature_values(*dfs):
-        for df in dfs:
-            if isinstance(df, pd.DataFrame):
-                for column in df:
-                    if df[column].isna().sum() > 1:
+
+def set_default_feature_values(*dfs):
+    for df in dfs:
+        if isinstance(df, pd.DataFrame):
+            for column in df:
+                if df[column].isna().sum() > 1:
                         df[column].fillna(1, inplace=True)
                     else:
                         print("Column has no missing values!")
