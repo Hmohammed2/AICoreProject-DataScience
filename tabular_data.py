@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 import re
 
-#%%
-
 def set_default_feature_values(*dfs):
     for df in dfs:
         if isinstance(df, pd.DataFrame):
@@ -43,7 +41,7 @@ def combine_description_strings(column, pattern):
     else:
         raise ValueError
 
-def save_data():
+def save_data(data):
     user_input = input("Do you want to save your data? (yes/no): ")
     while True:
         if user_input.lower() == "yes":
@@ -51,8 +49,7 @@ def save_data():
         elif user_input.lower() == "no":
             break
 
-
-if __name__ == "__main__":
+def clean_tabular_data(read_data: str):
 
     data = pd.read_csv("tabular_data/AirBnbData.csv")
     ratings_column = data[["Value_rate", "Cleanliness_rate", "Accuracy_rate", 
